@@ -22,9 +22,9 @@ $menus = array(
 
 $products = array(
      array(
-        "name" => "Super Antioxidant",
-        "capsule" => 60,
-        "price" => "$16.00",
+        "name" => "",
+        "capsule" => "",
+        "price" => "",
         "image" => "assets/img/supplement-1 1.png"
      ),
      array(

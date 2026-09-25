@@ -52,18 +52,20 @@ require_once 'header.php';
                     </div>
                     <div class="container">
                         <div id="products">
-                            <?php foreach ($products as $product) { ?>
+                            <?php foreach ($products as $product) { 
+                                
+                                    ?>
                                 <div class="product">
                                     <div class="img-product">
-                                    <img src="<?php echo $product["image"] ?>" alt="product1" >
+                                    <img src="<?php echo $image ?>" alt="product1" >
                                     </div>
                                         <div class="konten-product">
                                             <div class="konten-product-left">
                                             <h5><?php echo $product["name"]?></h5>
-                                            <p class="capsule"><?php echo $product["capsule"]?> capsules</p>
+                                            <p class="capsule"><?php echo $capsule?> capsules</p>
                                             </div>
                                             <div class="konten-product-right">
-                                            <p class="price"><?php echo$product["price"]?></p>
+                                            <p class="price"><?php echo$price?></p>
                                         </div>
                                     </div>
                                     <div class="add">
