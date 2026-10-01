@@ -1,0 +1,14 @@
+ if(is_array($target)) {
+                                    $class =(isset($target["class"])) && !empty($target["class"]) ?$target["class"] : "No class";
+                                    $class =(isset($target["title"])) && !empty($target["title"]) ?$target["title"] : "No Title";
+                                    $class =(isset($target["desc"])) && !empty($target["desc"]) ?$target["desc"] : "No Description";
+}
+                                    
+
+ <?php foreach ($target_buyer as $target) {?>
+                        <div class="<?php echo $target["class"] ?>">
+                            <div class="are-content">
+                            <h3><?php echo $target["title"] ?></h3>
+                            <p><?php echo $target["desc"] ?></p>
+                            <a href="#" class="are-btn">Shop Product</a>
+                            </div>

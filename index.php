@@ -1,6 +1,33 @@
 <?php
-include 'data.php';
+
+include 'connection.php';
 require_once 'header.php';
+include 'config.php';
+
+$result_products = mysqli_query($connection, "SELECT * FROM products");
+$products = mysqli_fetch_all($result_products, MYSQLI_ASSOC);
+
+
+$result_target = mysqli_query($connection, "SELECT * FROM target_buyer");
+$target_buyer = mysqli_fetch_all($result_target, MYSQLI_ASSOC);
+
+
+$result_why = mysqli_query($connection, "SELECT * FROM why");
+$why = mysqli_fetch_all($result_why, MYSQLI_ASSOC);
+
+
+$result_social = mysqli_query($connection, "SELECT * FROM social");
+$social = mysqli_fetch_all($result_social, MYSQLI_ASSOC);
+
+
+$result_service = mysqli_query($connection, "SELECT * FROM service");
+$service = mysqli_fetch_all($result_service, MYSQLI_ASSOC);
+
+
+$result_infos = mysqli_query($connection, "SELECT * FROM infos");
+$infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +80,12 @@ require_once 'header.php';
                     <div class="container">
                         <div id="products">
                             <?php foreach ($products as $product) { 
-                                
+                                if(is_array($product)) {
+                                    $name =(isset($product["name_product"])) && !empty($product["name_product"]) ?$product["name_product"] : "Produk Tidak ada";
+                                    $capsule =(isset($product["capsule"])) ?$product["capsule"] : 0;
+                                    $price =(isset($product["price"])) && !empty($product["price"]) ?$product["price"] : "---";
+                                    $image =(isset($product["image"])) && !empty($product["image"]) ?$product["image"] : "default.jpg";
+                                    }
                                     ?>
                                 <div class="product">
                                     <div class="img-product">
@@ -61,7 +93,7 @@ require_once 'header.php';
                                     </div>
                                         <div class="konten-product">
                                             <div class="konten-product-left">
-                                            <h5><?php echo $product["name"]?></h5>
+                                            <h5><?php echo $name?></h5>
                                             <p class="capsule"><?php echo $capsule?> capsules</p>
                                             </div>
                                             <div class="konten-product-right">
@@ -86,11 +118,17 @@ require_once 'header.php';
         <section class="are">
             <h1>Are You..</h1>
                 <div class="are-pic">
-                    <?php foreach ($target_buyer as $target) {?>
-                        <div class="<?php echo $target["class"] ?>">
+                    <?php foreach ($target_buyer as $target) {
+                         if(is_array($target)) {
+                                    $class =(isset($target["class"])) && !empty($target["class"]) ?$target["class"] : "No class";
+                                    $title =(isset($target["title"])) && !empty($target["title"]) ?$target["title"] : "No Title";
+                                    $descript =(isset($target["descript"])) && !empty($target["descript"]) ?$target["descript"] : "No Description";
+}
+                        ?>
+                        <div class="<?php echo $class ?>">
                             <div class="are-content">
-                            <h3><?php echo $target["title"] ?></h3>
-                            <p><?php echo $target["desc"] ?></p>
+                            <h3><?php echo $title ?></h3>
+                            <p><?php echo $descript ?></p>
                             <a href="#" class="are-btn">Shop Product</a>
                             </div>
                         </div>
@@ -104,13 +142,20 @@ require_once 'header.php';
             <p class="why-sub">Clarity was created with the mission to improve your health and wellbeing with the purest olive products on earth.</p>
             <div class="container">
                     <div class="why-cards">
-                        <?php foreach ($why as $item) {?>
+                        <?php foreach ($why as $item) {
+                            if(is_array($item)) {
+                                    $image =(isset($item["image"])) && !empty($item["image"]) ?$item["image"] : "default.jpg";
+                                    $alt =(isset($item["alt"])) && !empty($item["alt"]) ?$item["alt"] : "No picture";
+                                    $title =(isset($item["title"])) && !empty($item["title"]) ?$item["title"] : "No title";
+                                    $descript =(isset($item["descript"])) && !empty($item["descript"]) ?$item["descript"] : "No description";
+                            }
+                            ?>
                         <div class="why-card">
                             <div class="why-icon">
-                                <img src="<?php echo $item["image"] ?>" alt="<?php echo $item["alt"] ?>">
+                                <img src="<?php echo $image ?>" alt="<?php echo $alt ?>">
                             </div>
-                            <h4><?php echo $item["title"] ?></h4>
-                            <p><?php echo $item["desc"] ?> </p>
+                            <h4><?php echo $title ?></h4>
+                            <p><?php echo $descript ?> </p>
                         </div>
                         <?php } ?>
                     </div>
@@ -225,8 +270,13 @@ require_once 'header.php';
                     <div class="footer-col footer-col-left">
                         <div class="footer-col-left-a">
                             <h4>Information</h4>
-                                <?php foreach ($infos as $info) {?>
-                                    <a href="<?php echo $info["href"] ?>"><?php echo $info["text"] ?></a>
+                                <?php foreach ($infos as $info) {
+                                    if(is_array($info)){
+                                        $href = (isset($info["href"])) && !empty($info["href"]) ? $info["href"]: "#";
+                                        $label = (isset($info["label"])) && !empty($info["label"]) ? $info["label"]: "No label";
+                                    }
+                                    ?>
+                                    <a href="<?php echo $href ?>"><?php echo $label ?></a>
                                 <?php } ?>
                             </div>
                     </div>
@@ -236,8 +286,14 @@ require_once 'header.php';
                 <div class="footer-half footer-right">
                     <div class="footer-col">
                         <h4>Help Center</h4>
-                            <?php foreach ($service as $help) { ?>
-                                <a href="<?php echo $help["href"] ?>" class="<?php echo $help["class"] ?>"><?php echo $help["text"] ?></a>
+                            <?php foreach ($service as $help) { 
+                                if(is_array($help)){
+                                        $href= (isset($help["href"])) && !empty($help["href"]) ?$help["href"]: "#";
+                                        $class = (isset($help["class"])) && !empty($help["class"]) ?$help["class"]: "No Class";
+                                        $label = (isset($help["label"])) && !empty($help["label"]) ?$help["label"]: "No Text";
+                                    }
+                                ?>
+                                <a href="<?php echo $href ?>" class="<?php echo $class ?>"><?php echo $label ?></a>
                             <?php }?>
                     </div>
                     <div class="footer-col contact-col">
@@ -247,8 +303,14 @@ require_once 'header.php';
 
                             
                                 <div class="social-icons" id="contact">
-                                    <?php foreach ($social as $icon) {?>
-                                        <a href="<?php echo $icon["href"] ?>"><img src="<?php echo $icon["image"] ?>" alt="<?php echo $icon["alt"] ?>"></a>
+                                    <?php foreach ($social as $icon) {
+                                        if(is_array($icon)){
+                                        $href= (isset($icon["href"])) && !empty($icon["href"]) ?$icon["href"]: "#";
+                                        $image = (isset($icon["image"])) && !empty($icon["image"]) ?$icon["image"]: "default.jpg";
+                                        $alt = (isset($icon["alt"])) && !empty($icon["alt"]) ?$icon["alt"]: "No image";
+                                    }
+                                        ?>
+                                        <a href="<?php echo $href ?>"><img src="<?php echo $image ?>" alt="<?php echo $alt ?>"></a>
                                     <?php } ?>
                                 </div>
                         </div>

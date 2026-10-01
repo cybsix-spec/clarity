@@ -5,6 +5,8 @@ $name_website = "Clarity";
 $banner_text = "Harvesting Goodness <br> from Olive Oil";
 $phone_number = " 0361 123 4567";
 
+
+
 $menus = array(
      array(
         "label" => "ABOUT",
@@ -22,19 +24,19 @@ $menus = array(
 
 $products = array(
      array(
-        "name" => "",
-        "capsule" => "",
-        "price" => "",
+        "name_product" => "",
+        "capsule" => 60,
+        "price" => "$16.00",
         "image" => "assets/img/supplement-1 1.png"
      ),
      array(
-        "name" => "Super Antioxidant",
+        "name_product" => "Super Antioxidant",
         "capsule" => 30,
         "price" => "$16.00",
         "image" => "assets/img/supplement-1 1.png"
      ),
      array(
-        "name" => "Super Antioxidant",
+        "name_product" => "Super Antioxidant",
         "capsule" => 60,
         "price" => "$16.00",
         "image" => "assets/img/supplement-1 1.png"
@@ -46,12 +48,12 @@ $target_buyer = array( #target box
      array(
         "class" => "are-left",
         "title" => "Young Active People",
-        "desc" => "We offer supplement that can give you more energy boost"
+        "descript" => "We offer supplement that can give you more energy boost"
      ),
      array(
         "class" => "are-right",
         "title" => "Elderly",
-        "desc" => "We offer supplement to keep your body fit and healthy aging"
+        "descript" => "We offer supplement to keep your body fit and healthy aging"
      ),
 );
 
@@ -60,19 +62,19 @@ $why = array( #why card
         "image" => "assets/img/37.svg",
         "alt" => "Quality Icon",
         "title" => "Perfect Quality",
-        "desc" => "We grow, farm, and bottle the finest olive products you can find."
+        "descript" => "We grow, farm, and bottle the finest olive products you can find."
     ),
     array(
         "image" => "assets/img/9.svg",
         "alt" => "Price Icon",
         "title" => "Best Price Offers",
-        "desc" => "The price is very affordable among similar product."
+        "descript" => "The price is very affordable among similar product."
     ),
     array(
         "image" => "assets/img/14.svg",
         "alt" => "Natural Icon",
         "title" => "100% Natural",
-        "desc" => "Harvested from the finest olive trees that deliver health benefits."
+        "descript" => "Harvested from the finest olive trees that deliver health benefits."
     ),
 );
 
@@ -97,22 +99,22 @@ $social = array( #social icons
 $service = array( #help center
    array(
       "href" => "#",
-      "text" => "Privacy Policy",
+      "label" => "Privacy Policy",
       "class" => ""
    ),
    array(
       "href" => "#",
-      "text" => "Terms & Conditions",
+      "label" => "Terms & Conditions",
       "class" => ""
    ),
    array(
       "href" => "#",
-      "text" => "Legal <br> Support",
+      "label" => "Legal <br> Support",
       "class" => "legal"
    ),
    array(
       "href" => "#",
-      "text" => "Legal Support",
+      "label" => "Legal Support",
       "class" => "legal-mobile"
    ),
 );
@@ -120,15 +122,15 @@ $service = array( #help center
 $infos = array(
    array(
       "href" => "#about",
-      "text" => "About Us"
+      "label" => "About Us"
    ),
    array(
       "href" => "#products",
-      "text" => "Our Product"
+      "label" => "Our Product"
    ),
    array(
       "href" => "#footer",
-      "text" => "COntact Us"
+      "label" => "Contact Us"
    )
 );
 ?>

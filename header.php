@@ -1,6 +1,11 @@
 <?php 
 
-include 'data.php';
+include 'connection.php';
+include 'config.php';
+
+$result_menus = mysqli_query($connection, "SELECT * FROM menus");
+$menus =mysqli_fetch_all($result_menus, MYSQLI_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
