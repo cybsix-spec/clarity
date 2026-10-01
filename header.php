@@ -21,7 +21,7 @@ $menus =mysqli_fetch_all($result_menus, MYSQLI_ASSOC);
                 <img src="assets/img/logo-02 1.svg" alt="logo" class="Logo">
                 <nav class="nav-links">
                         <?php foreach ($menus as $menu) { ?>
-                        <a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
+                        <a href="<?php echo $menu['url'] ?:"#"; ?>"><?php echo $menu['label'] ?:"-"; ?></a>
                     <?php } ?>
                 </nav>
             </div>
@@ -41,7 +41,7 @@ $menus =mysqli_fetch_all($result_menus, MYSQLI_ASSOC);
             </div>
             <nav class="mobile-nav-links">
             <?php foreach ($menus as $menu) { ?>
-                        <a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
+                        <a href="<?php echo $menu['url']?:"#"; ?>"><?php echo $menu['label']?:"-"; ?></a>
             <?php } ?>
             </nav>
         </div>
