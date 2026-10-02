@@ -49,7 +49,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                             <h1><?php echo $banner_text ?></h1>
                         </div>
                         <div class="keterangan">
-                            <p>Enjoy a healthy life by eating <span class="bold"><?php echo($name_website) ?> Supplement</span> that make your life
+                            <p>Enjoy a healthy life by eating <span class="bold"><?php echo$name_website ?:"Clarity" ?> Supplement</span> that make your life
                             <br> healther for today and forever</p>
                         </div>
                         <div class="keterangan-mobile"> <!--Ni untuk hp-->
@@ -298,7 +298,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                     </div>
                     <div class="footer-col contact-col">
                         <div class="contact-col-content">
-                            <p><img src="assets/img/telepon.svg" alt="email" class="logo-contact"><?php echo($phone_number) ?></p>
+                            <p><img src="assets/img/telepon.svg" alt="email" class="logo-contact"><?php echo$phone_number ?:"0000-0000-0000" ?></p>
                             <p><img src="assets/img/email_logo_footer.png" alt="telepon" class="logo-contact"> info.clarity@gmail.com</p>
 
                             
@@ -319,7 +319,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                 </div>
 
                 <div class="copyright">
-                    <p>Copyright <?php echo $name_website ?> 2021 All Right Reserved</p>
+                    <p>Copyright <?php echo $name_website ?:"Clarity" ?> 2021 All Right Reserved</p>
                 </div>
             </div>
             <script src="assets/js/script.js"></script>
