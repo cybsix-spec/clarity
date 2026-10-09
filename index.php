@@ -53,7 +53,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                             <br> healther for today and forever</p>
                         </div>
                         <div class="keterangan-mobile"> <!--Ni untuk hp-->
-                            <p><span class="brs-1">Enjoy a healthy life by eating <strong class="bold">Clarity Supplement</strong> <br>
+                            <p><span class="brs-1">Enjoy a healthy life by eating <strong class="bold">Clarity Supplement</strong> <br> </span>
                                 <span class="brs-2">that make your life healther for tosday and forever</span>
                             </p>
                         </div>
@@ -79,17 +79,16 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                     </div>
                     <div class="container">
                         <div id="products">
+                            <?php if(!empty($products) && is_array($products)) { ?>
                             <?php foreach ($products as $product) { 
-                                if(is_array($product)) {
                                     $name =(isset($product["name_product"])) && !empty($product["name_product"]) ?$product["name_product"] : "Produk Tidak ada";
                                     $capsule =(isset($product["capsule"])) ?$product["capsule"] : 0;
                                     $price =(isset($product["price"])) && !empty($product["price"]) ?$product["price"] : "---";
                                     $image =(isset($product["image"])) && !empty($product["image"]) ?$product["image"] : "default.jpg";
-                                    }
                                     ?>
                                 <div class="product">
                                     <div class="img-product">
-                                    <img src="<?php echo $image ?>" alt="product1" >
+                                    <img src="<?php echo $image ?>" alt=<?php echo $product["name_product"] ?> >
                                     </div>
                                         <div class="konten-product">
                                             <div class="konten-product-left">
@@ -108,7 +107,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                                         <?php }?>
                                     </div>
                                 </div>
-                                
+                                <?php }?>
                             <?php  } ?>
                         </div>
                     </div>
@@ -118,12 +117,12 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
         <section class="are">
             <h1>Are You..</h1>
                 <div class="are-pic">
+                    <?php if(!empty($target_buyer) && is_array($target_buyer)){ ?>
                     <?php foreach ($target_buyer as $target) {
-                         if(is_array($target)) {
                                     $class =(isset($target["class"])) && !empty($target["class"]) ?$target["class"] : "No class";
                                     $title =(isset($target["title"])) && !empty($target["title"]) ?$target["title"] : "No Title";
                                     $descript =(isset($target["descript"])) && !empty($target["descript"]) ?$target["descript"] : "No Description";
-}
+
                         ?>
                         <div class="<?php echo $class ?>">
                             <div class="are-content">
@@ -132,6 +131,7 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                             <a href="#" class="are-btn">Shop Product</a>
                             </div>
                         </div>
+                    <?php } ?>
                     <?php } ?>
                 </div>
         </section>
@@ -142,13 +142,12 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
             <p class="why-sub">Clarity was created with the mission to improve your health and wellbeing with the purest olive products on earth.</p>
             <div class="container">
                     <div class="why-cards">
+                        <?php if(!empty($why) && is_array($why)) { ?>
                         <?php foreach ($why as $item) {
-                            if(is_array($item)) {
                                     $image =(isset($item["image"])) && !empty($item["image"]) ?$item["image"] : "default.jpg";
                                     $alt =(isset($item["alt"])) && !empty($item["alt"]) ?$item["alt"] : "No picture";
                                     $title =(isset($item["title"])) && !empty($item["title"]) ?$item["title"] : "No title";
                                     $descript =(isset($item["descript"])) && !empty($item["descript"]) ?$item["descript"] : "No description";
-                            }
                             ?>
                         <div class="why-card">
                             <div class="why-icon">
@@ -158,8 +157,8 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                             <p><?php echo $descript ?> </p>
                         </div>
                         <?php } ?>
+                        <?php } ?>
                     </div>
-            </div>
             </div>
         </section>
 
@@ -270,13 +269,13 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                     <div class="footer-col footer-col-left">
                         <div class="footer-col-left-a">
                             <h4>Information</h4>
+                            <?php if(!empty($infos) && is_array($infos)) { ?>
                                 <?php foreach ($infos as $info) {
-                                    if(is_array($info)){
                                         $href = (isset($info["href"])) && !empty($info["href"]) ? $info["href"]: "#";
                                         $label = (isset($info["label"])) && !empty($info["label"]) ? $info["label"]: "No label";
-                                    }
                                     ?>
                                     <a href="<?php echo $href ?>"><?php echo $label ?></a>
+                                <?php } ?>
                                 <?php } ?>
                             </div>
                     </div>
@@ -286,31 +285,31 @@ $infos = mysqli_fetch_all($result_infos, MYSQLI_ASSOC);
                 <div class="footer-half footer-right">
                     <div class="footer-col">
                         <h4>Help Center</h4>
+                        <?php if(!empty($service) && is_array($service)) { ?>
                             <?php foreach ($service as $help) { 
-                                if(is_array($help)){
                                         $href= (isset($help["href"])) && !empty($help["href"]) ?$help["href"]: "#";
                                         $class = (isset($help["class"])) && !empty($help["class"]) ?$help["class"]: "No Class";
                                         $label = (isset($help["label"])) && !empty($help["label"]) ?$help["label"]: "No Text";
-                                    }
                                 ?>
                                 <a href="<?php echo $href ?>" class="<?php echo $class ?>"><?php echo $label ?></a>
+                            <?php }?>
                             <?php }?>
                     </div>
                     <div class="footer-col contact-col">
                         <div class="contact-col-content">
-                            <p><img src="assets/img/telepon.svg" alt="email" class="logo-contact"><?php echo$phone_number ?:"0000-0000-0000" ?></p>
-                            <p><img src="assets/img/email_logo_footer.png" alt="telepon" class="logo-contact"> info.clarity@gmail.com</p>
+                            <p><img src="assets/img/telepon.svg" alt="telephone" class="logo-contact"><?php echo$phone_number ?:"0000-0000-0000" ?></p>
+                            <p><img src="assets/img/email_logo_footer.png" alt="email" class="logo-contact"> info.clarity@gmail.com</p>
 
                             
                                 <div class="social-icons" id="contact">
+                                    <?php if(!empty($social) && is_array($social)) { ?>
                                     <?php foreach ($social as $icon) {
-                                        if(is_array($icon)){
                                         $href= (isset($icon["href"])) && !empty($icon["href"]) ?$icon["href"]: "#";
                                         $image = (isset($icon["image"])) && !empty($icon["image"]) ?$icon["image"]: "default.jpg";
                                         $alt = (isset($icon["alt"])) && !empty($icon["alt"]) ?$icon["alt"]: "No image";
-                                    }
                                         ?>
                                         <a href="<?php echo $href ?>"><img src="<?php echo $image ?>" alt="<?php echo $alt ?>"></a>
+                                    <?php } ?>
                                     <?php } ?>
                                 </div>
                         </div>
